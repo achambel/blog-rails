@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+category1:
+  name: Category 1
+  description: MyText
