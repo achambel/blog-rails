@@ -8,7 +8,8 @@ class CategoryTest < ActiveSupport::TestCase
 
   test "shouldn't delete category has posts" do
     category = Category.first
-    category.destroy
-    assert_not category.destroyed?
+    assert_raises ActiveRecord::DeleteRestrictionError do
+      category.destroy
+    end
   end
 end
