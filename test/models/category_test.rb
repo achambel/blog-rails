@@ -12,4 +12,9 @@ class CategoryTest < ActiveSupport::TestCase
       category.destroy
     end
   end
+
+  test "name shouldn't have less 3 chars" do
+    category = Category.create(name: "TD", description: "Test Drive Dev")
+    assert_not category.valid?
+  end
 end
