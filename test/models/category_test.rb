@@ -6,11 +6,10 @@ class CategoryTest < ActiveSupport::TestCase
      assert_not category.save
   end
 
-  test "shouldn't delete category has posts" do
+  test "permit delete category and its posts" do
     category = Category.first
-    assert_raises ActiveRecord::DeleteRestrictionError do
-      category.destroy
-    end
+    category.destroy
+    assert category.destroyed?
   end
 
   test "name shouldn't have less 3 chars" do
