@@ -1,19 +1,26 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  test "shouldn't save category with empty name" do
-     category = Category.new
-     assert_not category.save
+  test "requires name" do
+     category = Category.create(name: nil)
+     assert category.errors[:name].any?
   end
 
-  test "permit delete category and its posts" do
+  test "name should have minimum 3 chars" do
+    category = Category.create(name: 'TD')
+    assert category.errors[:name].any?
+  end
+
+  test "name should have maximum 50 chars" do
+    category = Category.create(name: ("Ruby is cool" * 5))
+    assert category.errors[:name].any?
+  end
+
+  test "destroy category and its posts" do
     category = Category.first
     category.destroy
     assert category.destroyed?
+    assert_equal(0, category.posts.size)
   end
 
-  test "name shouldn't have less 3 chars" do
-    category = Category.create(name: "TD", description: "Test Drive Dev")
-    assert_not category.valid?
-  end
 end

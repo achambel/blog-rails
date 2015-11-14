@@ -44,3 +44,8 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'test_notifier'
+  gem 'minitest-utils'
+end
+
