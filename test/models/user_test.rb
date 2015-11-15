@@ -69,4 +69,13 @@ class UserTest < ActiveSupport::TestCase
     user = User.create(password: 'test', password_confirmation: 'invalid')
     assert user.errors[:password_confirmation].any?
   end
+
+  test "remove user and its posts" do
+    user = User.where(name: 'Alice').first
+    assert user.posts.count > 0
+
+    user.destroy
+    assert user.destroyed?
+    assert user.posts.empty?
+  end
 end
