@@ -25,4 +25,14 @@ class PostTest < ActiveSupport::TestCase
     post = Post.create(category: nil)
     assert post.errors[:category].any?
   end
+
+  test "requires user" do
+    post = Post.create(user: nil)
+    assert post.errors[:user].any?
+  end
+
+  test "requires valid user" do
+    post = Post.create(user: User.last)
+    assert post.errors[:user].empty?
+  end
 end

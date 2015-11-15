@@ -1,0 +1,11 @@
+john:
+  name: John Doe
+  whoami: I'm a legendary person.
+  email: john.doe@mail.com
+  password_digest: <%= BCrypt::Password.create('test') %>
+
+alice:
+  name: Alice
+  whoami: I'm another legendary person.
+  email: alice@mail.com
+  password_digest: <%= BCrypt::Password.create('test') %>

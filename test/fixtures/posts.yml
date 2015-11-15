@@ -4,8 +4,10 @@ one:
   title: Post1
   content: MyText
   category: category1
+  user: john
 
 two:
   title: Post2
   content: MyText
   category: category1
+  user: alice
