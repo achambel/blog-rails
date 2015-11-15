@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+post_one:
   title: Post1
   content: MyText
   category: category1
   user: john
 
-two:
+post_two:
   title: Post2
   content: MyText
   category: category1
