@@ -1,0 +1,13 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      post: "Post"
+    attributes:
+      post:
+        title: "Título"
+        content: "Conteúdo"
+        category_id: "Categoria"
+        created_at: "Criado às"
+        updated_at: "Atualizado às"
+        user_id: "Usuário"

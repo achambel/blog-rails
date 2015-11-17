@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      comment: "Comentário"
+    attributes:
+      comment:
+        content: "Conteúdo"
+        user_id: "Usuário"
+        post_id: "Post"
+        created_at: "Criado às"
+        updated_at: "Atualizado às"

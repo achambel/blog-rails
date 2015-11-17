@@ -1,0 +1,11 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      category: "Categoria"
+    attributes:
+      category:
+        name: "Nome"
+        description: "Descrição"
+        created_at: "Criado às"
+        updated_at: "Atualizado às"

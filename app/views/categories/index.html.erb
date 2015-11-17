@@ -1,0 +1,13 @@
+<h1><%=t('views.categories.h1')%></h1>
+<table>
+  <tr>
+    <td><%=Category.human_attribute_name(:name) %></td>
+    <td><%=Category.human_attribute_name(:description) %></td>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%=category.name %></td>
+      <td><%=category.description %></td>
+    </tr>
+  <% end %>
+</table>

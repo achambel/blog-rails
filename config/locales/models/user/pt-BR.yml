@@ -1,0 +1,13 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      user: "Usuário"
+    attributes:
+      user:
+        name: "Nome"
+        whoami: "Quem sou eu"
+        email: "E-mail"
+        password_digest: "Senha"
+        created_at: "Criado às"
+        updated_at: "Atualizado às"
