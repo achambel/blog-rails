@@ -3,11 +3,13 @@
   <tr>
     <td><%=Category.human_attribute_name(:name) %></td>
     <td><%=Category.human_attribute_name(:description) %></td>
+    <td>Actions</td>
   </tr>
   <% @categories.each do |category| %>
     <tr>
       <td><%=category.name %></td>
       <td><%=category.description %></td>
+      <td><%=link_to "show", category %></td>
     </tr>
   <% end %>
 </table>
