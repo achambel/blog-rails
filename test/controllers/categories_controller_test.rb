@@ -19,10 +19,19 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     assert_difference('Category.count') do
-      post :create, category: { name: @category.name, description: @category.description }
+      post :create, category: { name: 'Node JS', description: "It's cool, but, i prefer rails!" }
     end
 
     assert_equal I18n.t('views.categories.notice_saved'), flash[:notice]
     assert_redirected_to category_path(assigns(:category))
   end
+
+  test "should update category" do
+    @category.name = "Ember JS"
+    @category.description = "A JS framework"
+
+    patch :update, id: @category, category: { name: @category.name, description: @category.description }
+    assert_redirected_to category_path(assigns(:category))
+  end
+
 end
