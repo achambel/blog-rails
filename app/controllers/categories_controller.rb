@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category, notice: I18n.t('views.categories.notice_saved')
+      redirect_to @category, notice: I18n.t('views.defaults.notice.save')
     else
       render :new
     end
@@ -23,16 +23,22 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: I18n.t('views.categories.notice_saved')
+      redirect_to @category, notice: I18n.t('views.defaults.notice.update')
     else
       render :edit
     end
+  end
+
+  def destroy
+    @category.destroy
+    redirect_to categories_path, notice: I18n.t('views.categories.notice_destroyed')
   end
 
   private
   def set_category
     @category = Category.find(params[:id])
   end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
     params.require(:category).permit(:name, :description)

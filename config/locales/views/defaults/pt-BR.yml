@@ -1,0 +1,8 @@
+---
+pt-BR:
+    views:
+      defaults:
+        notice:
+          save: "Registro salvo com sucesso!"
+          update: "Registro atualizado com sucesso!"
+          destroy: "Registro removido com sucesso!"

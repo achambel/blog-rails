@@ -22,7 +22,6 @@ class CategoriesControllerTest < ActionController::TestCase
       post :create, category: { name: 'Node JS', description: "It's cool, but, i prefer rails!" }
     end
 
-    assert_equal I18n.t('views.categories.notice_saved'), flash[:notice]
     assert_redirected_to category_path(assigns(:category))
   end
 
@@ -31,7 +30,16 @@ class CategoriesControllerTest < ActionController::TestCase
     @category.description = "A JS framework"
 
     patch :update, id: @category, category: { name: @category.name, description: @category.description }
+
     assert_redirected_to category_path(assigns(:category))
+  end
+
+  test "should destroy category" do
+    assert_difference('Category.count', -1) do
+      delete :destroy, id: @category
+    end
+
+    assert_redirected_to categories_path
   end
 
 end
