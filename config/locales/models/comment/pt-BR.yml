@@ -2,7 +2,9 @@
 pt-BR:
   activerecord:
     models:
-      comment: "Comentário"
+      comment:
+        one: "Comentário"
+        other: "Comentários"
     attributes:
       comment:
         content: "Conteúdo"

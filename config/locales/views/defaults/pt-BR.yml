@@ -6,3 +6,8 @@ pt-BR:
           save: "Registro salvo com sucesso!"
           update: "Registro atualizado com sucesso!"
           destroy: "Registro removido com sucesso!"
+        actions: "Ações"
+        show: "Mostrar"
+        edit: "Editar"
+        delete: "Remover"
+        confirm: "Confirma esta ação?"

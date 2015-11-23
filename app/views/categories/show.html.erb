@@ -1,1 +1,6 @@
-<h1>Show</h1>
+<h1><%= Category.model_name.human %></h1>
+<h3><%= Category.human_attribute_name(:name) %></h3>
+<p><%= @category.name %></p>
+
+<h3><%= Category.human_attribute_name(:description) %></h3>
+<p><%= @category.description %></p>
