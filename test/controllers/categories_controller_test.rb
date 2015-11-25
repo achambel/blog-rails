@@ -42,4 +42,11 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to categories_path
   end
 
+  test "should show category" do
+    get :show, id: @category
+    assert_response :success
+    assert_not_nil assigns(:category)
+    assert_template :show
+  end
+
 end

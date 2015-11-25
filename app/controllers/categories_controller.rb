@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path, notice: I18n.t('views.categories.notice_destroyed')
+    redirect_to categories_path, notice: I18n.t('views.defaults.notice.destroy')
   end
 
   private
