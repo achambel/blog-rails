@@ -25,6 +25,13 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_redirected_to category_path(assigns(:category))
   end
 
+  test "should edit category" do
+    get :edit, id: @category
+    assert_response :success
+    assert_not_nil assigns(:category)
+    assert_template :edit
+  end
+
   test "should update category" do
     @category.name = "Ember JS"
     @category.description = "A JS framework"

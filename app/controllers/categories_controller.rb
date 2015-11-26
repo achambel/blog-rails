@@ -21,6 +21,9 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @category.update(category_params)
       redirect_to @category, notice: I18n.t('views.defaults.notice.update')
