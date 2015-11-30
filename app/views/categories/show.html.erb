@@ -4,3 +4,12 @@
 
 <h3><%= Category.human_attribute_name(:description) %></h3>
 <p><%= @category.description %></p>
+
+<p>
+  <%= link_to t('views.defaults.edit'), edit_category_path(@category) %>
+  <%= link_to t('views.defaults.delete'), category_path(@category) ,
+                          method: :delete,
+                          data: { confirm: t('views.defaults.confirm') }
+                          %>
+  <%= link_to t('views.defaults.back'), categories_path %>
+</p>

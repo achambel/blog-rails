@@ -16,5 +16,6 @@ group :test do
   gem 'test_notifier'
   gem 'capybara'
   gem 'minitest-utils'
+  gem 'capybara-webkit'
 end
 
