@@ -1,0 +1,16 @@
+<h1><%= User.model_name.human(:count => 2) %></h1>
+<%= link_to t('views.defaults.new'), new_user_path %>
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to t('views.defaults.show'), user_path(user) %></td>
+      <td><%= link_to t('views.defaults.edit'), edit_user_path(user) %></td>
+      <td><%=
+              link_to t('views.defaults.delete'),
+                user_path(user),
+                method: :delete,
+                data: { confirm: t('views.defaults.confirm') }
+          %></td>
+    </tr>
+  <% end %>
+</table>
