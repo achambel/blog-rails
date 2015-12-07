@@ -1,6 +1,6 @@
 require_relative 'categories_test_base'
 
-class EditTest < CategoriesTestBase
+class EditCategoryTest < CategoriesTestBase
   test "edit valid category" do
     visit edit_category_path(@category)
     assert page.has_text? 'Categoria'

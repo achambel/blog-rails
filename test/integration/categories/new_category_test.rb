@@ -1,6 +1,6 @@
 require_relative 'categories_test_base'
 
-class NewTest < CategoriesTestBase
+class NewCategoryTest < CategoriesTestBase
   test "new category from categories" do
     visit categories_path
     page.click_link 'Novo'

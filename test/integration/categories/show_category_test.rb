@@ -1,15 +1,13 @@
 require_relative 'categories_test_base'
 
-class ShowTest < CategoriesTestBase
+class ShowCategoryTest < CategoriesTestBase
   test "show category from categories" do
     visit categories_path
-    page.click_link 'Mostrar'
-    assert page.has_text? 'Categoria'
-    assert page.has_text? 'Nome'
-    assert page.has_text? 'Descrição'
-    assert page.has_link? 'Editar'
-    assert page.has_link? 'Remover'
-    assert page.has_link? 'Voltar'
+    page.first(:link, 'Mostrar').click
+
+    %w[Categoria Nome Descrição Editar Remover Voltar].each do |text|
+      assert page.has_text?(text), "Texto #{text} não foi encontrado."
+    end
   end
 
   test "go to edit page from show" do

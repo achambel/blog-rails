@@ -1,6 +1,6 @@
 require_relative 'categories_test_base'
 
-class CategoriesTest < CategoriesTestBase
+class IndexCategoryTest < CategoriesTestBase
 
   test "list categories" do
     visit categories_path

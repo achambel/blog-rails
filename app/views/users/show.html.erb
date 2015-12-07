@@ -1,0 +1,24 @@
+<h1><%= User.model_name.human %></h1>
+<h3><%= User.human_attribute_name(:name) %></h3>
+<p><%= @user.name %></p>
+
+<h3><%= User.human_attribute_name(:whoami) %></h3>
+<p><%= @user.whoami %></p>
+
+<h3><%= User.human_attribute_name(:email) %></h3>
+<p><%= @user.email %></p>
+
+<h3><%= User.human_attribute_name(:created_at) %></h3>
+<p><%= l(@user.created_at) %></p>
+
+<h3><%= User.human_attribute_name(:updated_at) %></h3>
+<p><%= l(@user.updated_at) %></p>
+
+<p>
+  <%= link_to t('views.defaults.edit'), edit_user_path(@user) %>
+  <%= link_to t('views.defaults.delete'), user_path(@user) ,
+                          method: :delete,
+                          data: { confirm: t('views.defaults.confirm') }
+                          %>
+  <%= link_to t('views.defaults.back'), users_path %>
+</p>

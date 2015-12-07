@@ -1,8 +1,15 @@
 <h1><%= User.model_name.human(:count => 2) %></h1>
 <%= link_to t('views.defaults.new'), new_user_path %>
 <table>
+  <tr>
+    <td><%= User.human_attribute_name(:name) %></td>
+    <td><%= User.human_attribute_name(:email) %></td>
+    <td colspan="3"><%= t('views.defaults.actions') %></td>
+  </tr>
   <% @users.each do |user| %>
     <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
       <td><%= link_to t('views.defaults.show'), user_path(user) %></td>
       <td><%= link_to t('views.defaults.edit'), edit_user_path(user) %></td>
       <td><%=

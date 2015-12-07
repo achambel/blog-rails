@@ -1,6 +1,6 @@
 require_relative 'users_test_base'
 
-class IndexTest < UsersTestBase
+class IndexUserTest < UsersTestBase
   test "list users" do
     visit users_path
 
