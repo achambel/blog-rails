@@ -13,3 +13,5 @@ pt-BR:
         password_digest: "Senha"
         created_at: "Criado às"
         updated_at: "Atualizado às"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"

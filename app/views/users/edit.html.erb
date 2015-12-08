@@ -1,0 +1,6 @@
+<%= render 'form' %>
+<%= link_to t('views.defaults.cancel'), user_path(@user) %>
+<%= link_to t('views.defaults.delete'), user_path(@user) ,
+                          method: :delete,
+                          data: { confirm: t('views.defaults.confirm') }
+                          %>

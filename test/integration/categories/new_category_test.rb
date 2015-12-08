@@ -4,6 +4,7 @@ class NewCategoryTest < CategoriesTestBase
   test "new category from categories" do
     visit categories_path
     page.click_link 'Novo'
+
     assert_equal new_category_path, current_path
   end
 

@@ -1,0 +1,46 @@
+<h1><%= User.model_name.human %></h1>
+
+<% if @user.errors.any? %>
+  <p>
+  <%= t('errors.template.header',
+          model: User.model_name.human,
+          count: @user.errors.count ) %>
+  </p>
+  <p>
+    <%= t('errors.template.body') %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :whoami %>
+    <%= f.text_area :whoami %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
