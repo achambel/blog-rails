@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
   resources :categories
   resources :posts do
     resources :comments
   end
   resources :users
+
+  get 'login' => 'login#new'
+  post 'login' => 'login#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
