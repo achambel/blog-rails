@@ -1,7 +1,17 @@
 require_relative 'categories_test_base'
 
 class NewCategoryTest < CategoriesTestBase
+
+  test "denied access for not authenticated user" do
+    visit new_category_path
+
+    assert_equal login_path, current_path
+  end
+
   test "new category from categories" do
+    user = users(:john)
+    login_as(user)
+
     visit categories_path
     page.click_link 'Novo'
 
@@ -9,6 +19,9 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "fill valid category" do
+    user = users(:john)
+    login_as(user)
+
     visit categories_path
     page.click_link 'Novo'
     page.fill_in 'Nome', with: 'Coffee'
@@ -19,6 +32,9 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "fill invalid category" do
+    user = users(:john)
+    login_as(user)
+
     visit categories_path
     page.click_link 'Novo'
     page.click_button 'Criar Categoria'
@@ -27,6 +43,9 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "go to categories from new" do
+    user = users(:john)
+    login_as(user)
+
     visit new_category_path
     page.click_link 'Voltar'
 

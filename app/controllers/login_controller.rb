@@ -3,7 +3,6 @@ class LoginController < ApplicationController
   end
 
   def create
-    # TODO: user.authenticate
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])

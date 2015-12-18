@@ -1,7 +1,17 @@
 require_relative 'categories_test_base'
 
 class EditCategoryTest < CategoriesTestBase
+
+  test "denied access for not authenticated user" do
+    visit edit_category_path(@category)
+
+    assert_equal login_path, current_path
+  end
+
   test "edit valid category" do
+    user = users(:john)
+    login_as(user)
+
     visit edit_category_path(@category)
     assert page.has_text? 'Categoria'
 
@@ -13,6 +23,9 @@ class EditCategoryTest < CategoriesTestBase
   end
 
   test "edit invalid category" do
+    user = users(:john)
+    login_as(user)
+
     visit edit_category_path(@category)
 
     page.fill_in 'Nome', with: ''
@@ -22,6 +35,9 @@ class EditCategoryTest < CategoriesTestBase
   end
 
   test "go to categories from edit" do
+    user = users(:john)
+    login_as(user)
+
     visit edit_category_path(@category)
     page.click_link 'Cancelar'
 
@@ -30,6 +46,10 @@ class EditCategoryTest < CategoriesTestBase
 
   test "confirm delete from edit" do
     Capybara.current_driver = :webkit
+
+    user = users(:john)
+    login_as(user)
+
     visit edit_category_path(@category)
 
     page.accept_confirm 'Confirma esta ação?' do
@@ -42,6 +62,10 @@ class EditCategoryTest < CategoriesTestBase
 
   test "dismiss delete action from edit" do
     Capybara.current_driver = :webkit
+
+    user = users(:john)
+    login_as(user)
+
     visit edit_category_path(@category)
 
     page.dismiss_confirm 'Confirma esta ação?' do

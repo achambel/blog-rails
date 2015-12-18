@@ -18,5 +18,6 @@ class NewLoginTest < ActionDispatch::IntegrationTest
     page.click_button 'Entrar'
 
     assert page.has_text? 'Falha na autenticação!'
+    assert_equal login_path, current_path
   end
 end

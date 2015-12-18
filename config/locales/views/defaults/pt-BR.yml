@@ -16,3 +16,4 @@ pt-BR:
         cancel: "Cancelar"
         login: "Entrar"
         login_fail: "Falha na autenticação!"
+        login_required: "Autenticação necessária!"

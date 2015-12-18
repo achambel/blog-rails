@@ -1,8 +1,16 @@
 require_relative 'categories_test_base'
 
 class IndexCategoryTest < CategoriesTestBase
+  test "denied access for not authenticated user" do
+    visit categories_path
+
+    assert_equal login_path, current_path
+  end
 
   test "list categories" do
+    user = users(:john)
+    login_as(user)
+
     visit categories_path
 
     assert page.has_text? 'Categorias'
