@@ -1,7 +1,14 @@
 require_relative 'users_test_base'
 
 class EditUserTest < UsersTestBase
+  test "denied access for not authentication user" do
+    visit edit_user_path(@user)
+
+    assert_equal login_path, current_path
+  end
+
   test "edit valid user" do
+    login_as(@user)
     visit edit_user_path(@user)
 
     assert page.has_text? 'Usuário'
@@ -14,6 +21,7 @@ class EditUserTest < UsersTestBase
   end
 
   test "edit invalid user" do
+    login_as(@user)
     visit edit_user_path(@user)
 
     page.fill_in 'Nome', with: ''
@@ -25,6 +33,7 @@ class EditUserTest < UsersTestBase
   end
 
   test "go to users from edit" do
+    login_as(@user)
     visit edit_user_path(@user)
     page.click_link 'Cancelar'
 
@@ -33,6 +42,12 @@ class EditUserTest < UsersTestBase
 
   test "confirm delete from edit" do
     Capybara.current_driver = :webkit
+
+    # TODO:
+    # John destroy Alice - OK
+    # John destroy yourself - Never
+    user = users(:john)
+    login_as(user)
     visit edit_user_path(@user)
 
     page.accept_confirm 'Confirma esta ação?' do
@@ -45,6 +60,8 @@ class EditUserTest < UsersTestBase
 
   test "dismiss delete action from edit" do
     Capybara.current_driver = :webkit
+
+    login_as(@user)
     visit edit_user_path(@user)
 
     page.dismiss_confirm 'Confirma esta ação?' do

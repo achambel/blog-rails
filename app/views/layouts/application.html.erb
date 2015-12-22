@@ -7,9 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div>
+    <% if logged_in? %>
+      <span><%= current_user.name %></span>
+      <%= link_to t('views.defaults.logout'), logout_path,  method: 'delete' %>
+    <% else %>
+      <%= link_to t('views.defaults.login'), login_path %>
+    <% end %>
+  </div>
   <p>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
+    <% flash.each do |type, message| %>
+      <%= message %>
+    <% end %>
   </p>
 
 <%= yield %>

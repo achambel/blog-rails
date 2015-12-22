@@ -1,7 +1,15 @@
 require_relative 'users_test_base'
 
 class NewUserTest < UsersTestBase
+  test "denied access for not authentication user" do
+    visit new_user_path
+
+    assert_equal login_path, current_path
+  end
+
   test "new user from users" do
+    login_as(@user)
+
     visit users_path
     page.click_link 'Novo'
 
@@ -9,6 +17,8 @@ class NewUserTest < UsersTestBase
   end
 
   test "fill valid user" do
+    login_as(@user)
+
     visit users_path
     page.click_link 'Novo'
 
@@ -23,6 +33,7 @@ class NewUserTest < UsersTestBase
   end
 
   test "fill invalid user" do
+    login_as(@user)
     visit users_path
     page.click_link 'Novo'
 
@@ -32,6 +43,7 @@ class NewUserTest < UsersTestBase
   end
 
   test "go to users from new" do
+    login_as(@user)
     visit new_user_path
     page.click_link 'Voltar'
 
