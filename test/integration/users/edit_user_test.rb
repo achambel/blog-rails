@@ -43,9 +43,6 @@ class EditUserTest < UsersTestBase
   test "confirm delete from edit" do
     Capybara.current_driver = :webkit
 
-    # TODO:
-    # John destroy Alice - OK
-    # John destroy yourself - Never
     user = users(:john)
     login_as(user)
     visit edit_user_path(@user)

@@ -34,8 +34,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to users_path, notice: I18n.t('views.defaults.notice.destroy')
+    if @user.id != current_user.id
+      @user.destroy
+      redirect_to users_path, notice: I18n.t('views.defaults.notice.destroy')
+    else
+      redirect_to :back, notice: I18n.t('views.defaults.notice.not_destroy_yourself')
+    end
   end
 
   private

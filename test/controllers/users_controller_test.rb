@@ -6,6 +6,10 @@ class UsersControllerTest < ActionController::TestCase
     login_as(@user)
   end
 
+  teardown do
+    logout
+  end
+
   test "should get index" do
     get :index
 
@@ -40,10 +44,23 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should destroy user" do
+    another_user = users(:alice)
+
     assert_difference('User.count', -1) do
-      delete :destroy, id: @user
+      delete :destroy, id: another_user
     end
 
     assert_redirected_to users_path
   end
+
+  test "should denied logged user destroy yourself" do
+    request.env["HTTP_REFERER"] = edit_user_path(@user)
+
+    assert_difference('User.count', 0) do
+      delete :destroy, id: @user
+    end
+
+    assert_redirected_to edit_user_path(@user)
+  end
+
 end

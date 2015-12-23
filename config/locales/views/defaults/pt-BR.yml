@@ -6,6 +6,7 @@ pt-BR:
           save: "Registro salvo com sucesso!"
           update: "Registro atualizado com sucesso!"
           destroy: "Registro removido com sucesso!"
+          not_destroy_yourself: "O usuário autenticado não pode remover a si mesmo!"
         actions: "Ações"
         new: "Novo"
         show: "Mostrar"
