@@ -8,8 +8,7 @@ class IndexCategoryTest < CategoriesTestBase
   end
 
   test "list categories" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
 

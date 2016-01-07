@@ -9,8 +9,7 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "new category from categories" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
     page.click_link 'Novo'
@@ -19,8 +18,7 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "fill valid category" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
     page.click_link 'Novo'
@@ -32,8 +30,7 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "fill invalid category" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
     page.click_link 'Novo'
@@ -43,8 +40,7 @@ class NewCategoryTest < CategoriesTestBase
   end
 
   test "go to categories from new" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit new_category_path
     page.click_link 'Voltar'

@@ -9,8 +9,7 @@ class ShowCategoryTest < CategoriesTestBase
   end
 
   test "show category from categories" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
     page.first(:link, 'Mostrar').click
@@ -21,8 +20,7 @@ class ShowCategoryTest < CategoriesTestBase
   end
 
   test "go to edit page from show" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit category_path(@category)
     page.click_link 'Editar'
@@ -32,8 +30,7 @@ class ShowCategoryTest < CategoriesTestBase
   test "confirm delete from show" do
     Capybara.current_driver = :webkit
 
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit category_path(@category)
 
@@ -48,8 +45,7 @@ class ShowCategoryTest < CategoriesTestBase
   test "dismiss delete action from show" do
     Capybara.current_driver = :webkit
 
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit category_path(@category)
 
@@ -61,8 +57,7 @@ class ShowCategoryTest < CategoriesTestBase
   end
 
   test "go back from show" do
-    user = users(:john)
-    login_as(user)
+    login_as(@user)
 
     visit categories_path
 
