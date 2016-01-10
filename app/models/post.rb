@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   validates :title, length: { minimum: 3, maximum: 255 }
   validates_presence_of :content, :category, :user
+  default_scope { order('created_at DESC') }
 end

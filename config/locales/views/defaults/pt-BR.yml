@@ -20,3 +20,5 @@ pt-BR:
         login_required: "Autenticação necessária!"
         logout: "Sair"
         logout_alert: "Sessão encerrada!"
+        in: "em"
+        ago: "há"

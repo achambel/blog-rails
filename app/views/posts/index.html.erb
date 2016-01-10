@@ -1,1 +1,15 @@
-Posts index
+<article>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <section>
+          <p><%= link_to post.title, post_path(post) %></p>
+          <p>
+            <%= "#{t('views.defaults.in')} #{post.category.name}" %>
+            <%= "#{t('views.defaults.ago')} #{time_ago_in_words(post.created_at)}" %>
+          </p>
+        </section>
+      </li>
+    <% end %>
+  </ul>
+</article>

@@ -35,4 +35,16 @@ class PostTest < ActiveSupport::TestCase
     post = Post.create(user: User.last)
     assert post.errors[:user].empty?
   end
+
+  test "should list posts in DESC order by created_at" do
+    post1, post2 = Post.take(2)
+    post1.created_at = Time.now - 1.day
+    post1.save
+    post2.created_at = Time.now + 1.day
+    post2.save
+
+    post1, post2 = Post.find(post1, post2)
+
+    assert post1.created_at >= post2.created_at
+  end
 end
