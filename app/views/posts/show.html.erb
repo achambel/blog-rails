@@ -1,0 +1,12 @@
+<article>
+  <header>
+    <h3><%= @post.title %></h3>
+  </header>
+  <section>
+    <p><%= @post.content %></p>
+    <p>
+      <span><%= "#{t('views.defaults.author')}: #{@post.user.name} | " %></span>
+      <span><%= l(@post.created_at, format: :long) %></span>
+    </p>
+  </section>
+</article>
