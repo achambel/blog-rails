@@ -32,6 +32,13 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to post_path(assigns(:post))
   end
 
+  test "should edit post" do
+    get :edit, id: @post
+    assert_response :success
+    assert_not_nil assigns(:post)
+    assert_template :edit
+  end
+
   test "should update post" do
     patch :update, id: @post, post: {
       title: 'How to configure docker with postgresql',

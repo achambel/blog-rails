@@ -8,6 +8,7 @@
 </head>
 <body>
   <div>
+    <span><%= link_to t('views.defaults.home'), root_path %></span>
     <% if logged_in? %>
       <span><%= current_user.name %></span>
       <%= link_to t('views.defaults.logout'), logout_path,  method: 'delete' %>
