@@ -40,7 +40,7 @@ class ShowPostTest < ActionDispatch::IntegrationTest
       page.click_link 'Remover'
     end
 
-    assert page.find('body *', text: /^Registro removido com sucesso!$/)
+    assert page.find('div.content', text: /^Registro removido com sucesso!$/)
     assert_equal posts_path, current_path
   end
 

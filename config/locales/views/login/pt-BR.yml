@@ -1,0 +1,10 @@
+---
+pt-BR:
+  views:
+    login:
+      login: "Entrar"
+      login_fail: "Falha na autenticação!"
+      login_required: "Autenticação necessária!"
+      logout: "Sair"
+      logout_alert: "Sessão encerrada!"
+      access: "Acesse sua conta"

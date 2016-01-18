@@ -1,20 +1,41 @@
 <article>
   <header>
-    <h3><%= @post.title %></h3>
+    <h3>
+      <i class="book icon"></i>
+      <%= @post.title %>
+    </h3>
   </header>
   <section>
     <p><%= @post.content %></p>
     <p>
-      <span><%= "#{t('views.defaults.author')}: #{@post.user.name} | " %></span>
-      <span><%= l(@post.created_at, format: :long) %></span>
+      <span>
+        <i class="user icon"></i>
+        <%= "#{t('views.defaults.author')}: #{@post.user.name} " %>
+      </span>
+
+      <span>
+        <i class="calendar icon"></i>
+        <%= l(@post.created_at, format: :long) %>
+      </span>
     </p>
     <p>
-      <span><%= link_to t('views.defaults.back'), posts_path %></span>
-      <span><%= link_to t('views.defaults.edit'), edit_post_path(@post) %></span>
-      <span><%= link_to t('views.defaults.delete'), post_path(@post),
+      <%= link_to posts_path, class: 'ui teal button' do %>
+        <i class="arrow left icon"></i>
+        <%= t('views.defaults.back') %>
+      <% end %>
+
+      <%= link_to edit_post_path(@post), class: 'ui teal button' do %>
+        <i class="edit icon"></i>
+        <%= t('views.defaults.edit') %>
+      <% end %>
+
+      <%= link_to post_path(@post),
                           method: :delete,
-                          data: { confirm: t('views.defaults.confirm') }
-                          %></span>
+                          data: { confirm: t('views.defaults.confirm') },
+                          class: 'ui teal button' do %>
+          <i class="erase icon"></i>
+          <%= t('views.defaults.delete') %>
+      <% end %>
     </p>
   </section>
 </article>

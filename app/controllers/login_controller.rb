@@ -10,12 +10,12 @@ class LoginController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      redirect_to login_path, notice: I18n.t('views.defaults.login_fail')
+      redirect_to login_path, flash: { warning: I18n.t('views.login.login_fail') }
     end
   end
 
   def destroy
     reset_session
-    redirect_to login_path, notice: I18n.t('views.defaults.logout_alert')
+    redirect_to login_path, flash: { info: I18n.t('views.login.logout_alert') }
   end
 end

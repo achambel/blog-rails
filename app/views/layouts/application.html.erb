@@ -7,22 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-    <span><%= link_to t('views.defaults.home'), root_path %></span>
-    <% if logged_in? %>
-      <span><%= current_user.name %></span>
-      <%= link_to t('views.defaults.logout'), logout_path,  method: 'delete' %>
-    <% else %>
-      <%= link_to t('views.defaults.login'), login_path %>
-    <% end %>
+  <div class="ui inverted menu">
+    <%= link_to 'Blog Rails', root_path, class: 'header item' %>
+    <div class="right icon menu">
+      <% if logged_in? %>
+        <div class="item">
+          <i class="user icon"></i>
+          <span><%= current_user.name %></span>
+          <i class="sign out icon"></i>
+          <%= link_to t('views.login.logout'), logout_path,  method: 'delete' %>
+        </div>
+
+      <% else %>
+        <div class="item">
+          <i class="sign in icon"></i>
+          <%= link_to t('views.login.login'), login_path %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <p>
+
+  <div class="ui main text container">
     <% flash.each do |type, message| %>
-      <%= message %>
+      <%= content_tag :div, nil, class: "ui icon #{type} message" do %>
+        <%= content_tag :i, nil, class: "#{type} sign icon" %>
+        <%= content_tag :div, message, class: "content" %>
+      <% end %>
     <% end %>
-  </p>
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>

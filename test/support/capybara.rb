@@ -5,6 +5,10 @@ class ActionDispatch::IntegrationTest
 
   self.use_transactional_fixtures = false
 
+  Capybara::Webkit.configure do |config|
+    config.allow_url("fonts.googleapis.com")
+  end
+
   def setup
     Capybara.javascript_driver = :webkit
   end

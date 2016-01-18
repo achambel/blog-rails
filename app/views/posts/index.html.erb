@@ -1,15 +1,15 @@
-<article>
-  <ul>
-    <% @posts.each do |post| %>
-      <li>
-        <section>
-          <p><%= link_to post.title, post_path(post) %></p>
-          <p>
-            <%= "#{t('views.defaults.in')} #{post.category.name}" %>
-            <%= "#{t('views.defaults.ago')} #{time_ago_in_words(post.created_at)}" %>
-          </p>
-        </section>
-      </li>
-    <% end %>
-  </ul>
-</article>
+<div class="ui items">
+  <% @posts.each do |post| %>
+  <div class="item">
+    <div class="content">
+      <i class="book icon"></i>
+      <%= link_to post.title, post_path(post), class: 'header' %>
+      <div class="description">
+        <%= "#{t('views.defaults.in')} #{post.category.name}" %>
+        <i class="calendar icon"></i>
+        <%= "#{t('views.defaults.ago')} #{time_ago_in_words(post.created_at)}" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

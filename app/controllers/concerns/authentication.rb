@@ -9,7 +9,7 @@ extend ActiveSupport::Concern
   private
   def require_logged_user
     redirect_to login_path,
-      alert: I18n.t('views.defaults.login_required') unless logged_in?
+      flash: { info: I18n.t('views.login.login_required') } unless logged_in?
   end
 
   def current_user
