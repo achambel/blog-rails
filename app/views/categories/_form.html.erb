@@ -1,31 +1,17 @@
 <h1><%= Category.model_name.human %></h1>
 
-<% if @category.errors.any? %>
-  <p>
-  <%= t('errors.template.header',
-          model: Category.model_name.human,
-          count: @category.errors.count ) %>
-  </p>
-  <p>
-    <%= t('errors.template.body') %>
-    <ul>
-      <% @category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </p>
-<% end %>
+<%= render 'partials/error_messages', object: @category %>
 
-<%= form_for @category do |f| %>
-  <p>
+<%= form_for @category, html: { class: 'ui form' } do |f| %>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
-  </p>
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit nil, class: 'ui teal button' %>
 <% end %>

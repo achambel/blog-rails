@@ -1,46 +1,32 @@
 <h1><%= User.model_name.human %></h1>
 
-<% if @user.errors.any? %>
-  <p>
-  <%= t('errors.template.header',
-          model: User.model_name.human,
-          count: @user.errors.count ) %>
-  </p>
-  <p>
-    <%= t('errors.template.body') %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </p>
-<% end %>
+<%= render 'partials/error_messages', object: @user %>
 
-<%= form_for @user do |f| %>
-  <p>
+<%= form_for @user, html: { class: 'ui form' } do |f| %>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :whoami %>
     <%= f.text_area :whoami %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password %>
-  </p>
+  </div>
 
-  <p>
+  <div class="field">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
-  </p>
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit nil, class: 'ui teal button' %>
 <% end %>

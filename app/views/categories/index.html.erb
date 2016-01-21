@@ -1,24 +1,46 @@
 <h1><%= Category.model_name.human(:count => 2) %></h1>
-<%= link_to t('views.defaults.new'), new_category_path, class: 'new' %>
-<table>
-  <tr>
-    <td><%= Category.human_attribute_name(:name) %></td>
-    <td><%= Category.human_attribute_name(:description) %></td>
-    <td colspan="3"><%= t('views.defaults.actions') %></td>
-  </tr>
+<%= link_to new_category_path, class: 'ui teal button' do %>
+  <i class="write icon"></i>
+  <%= t('views.defaults.new') %>
+<% end %>
+<table class="ui selectable striped table">
+  <thead>
+    <tr>
+      <th><%= Category.human_attribute_name(:name) %></th>
+      <th><%= Category.human_attribute_name(:description) %></th>
+      <th><%= t('views.defaults.actions') %></th>
+    </tr>
+  </thead>
   <% @categories.each do |category| %>
     <tr>
-      <td><%= category.name %></td>
+      <td><i class="folder icon"></i><%= category.name %></td>
       <td><%= category.description %></td>
-      <td><%= link_to t('views.defaults.show'), category,
-              :class => 'show' %></td>
-      <td><%= link_to t('views.defaults.edit'),
-              edit_category_path(category) %></td>
-      <td><%= link_to t('views.defaults.delete'),
-              category_path(category),
-              method: :delete,
-              data: { confirm: t('views.defaults.confirm') }
-           %></td>
+      <td>
+        <div class="ui icon dropdown teal button">
+          <i class="wrench icon"></i>
+          <div class="menu">
+
+            <%= link_to category, class: "item" do %>
+              <i class="search icon"></i>
+              <%= t('views.defaults.show') %>
+            <% end %>
+
+            <%= link_to edit_category_path(category), class: "item" do %>
+              <i class="edit icon"></i>
+              <%= t('views.defaults.edit') %>
+            <% end %>
+
+            <%= link_to category_path(category),
+                method: :delete,
+                data: { confirm: t('views.defaults.confirm') },
+                class: "item" do %>
+                <i class="trash icon"></i>
+                <%= t('views.defaults.delete') %>
+            <% end %>
+
+          </div>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>

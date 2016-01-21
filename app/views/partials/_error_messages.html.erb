@@ -1,0 +1,18 @@
+<% if object.errors.any? %>
+  <div class="ui icon error message">
+    <i class="warning circle icon"></i>
+    <div class="content">
+    <div class="header">
+      <%= t('errors.template.header',
+              model: object.model_name.human,
+              count: object.errors.count ) %>
+    </div>
+    <p><%= t('errors.template.body') %></p>
+    <ul class="list">
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+<% end %>
