@@ -1,0 +1,22 @@
+<h1><%= Category.model_name.human %></h1>
+
+<%= render 'partials/error_messages', object: @post %>
+
+<%= form_for @post, html: { class: 'ui form' } do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.select :category_id, Category.all.collect {|c| [c.name, c.id] } %>
+  </div>
+
+  <%= f.submit nil, class: 'ui teal button' %>
+<% end %>
