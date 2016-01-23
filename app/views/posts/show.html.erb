@@ -19,23 +19,7 @@
       </span>
     </p>
     <p>
-      <%= link_to posts_path, class: 'ui teal button' do %>
-        <i class="arrow left icon"></i>
-        <%= t('views.defaults.back') %>
-      <% end %>
-
-      <%= link_to edit_post_path(@post), class: 'ui teal button' do %>
-        <i class="edit icon"></i>
-        <%= t('views.defaults.edit') %>
-      <% end %>
-
-      <%= link_to post_path(@post),
-                          method: :delete,
-                          data: { confirm: t('views.defaults.confirm') },
-                          class: 'ui teal button' do %>
-          <i class="erase icon"></i>
-          <%= t('views.defaults.delete') %>
-      <% end %>
+      <%= render 'partials/show_buttons', object: @post %>
     </p>
   </section>
 </article>

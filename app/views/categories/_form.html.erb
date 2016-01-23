@@ -13,5 +13,5 @@
     <%= f.text_field :description %>
   </div>
 
-  <%= f.submit nil, class: 'ui teal button' %>
+  <%= render 'partials/new_edit_delete_buttons', form: f, object: @category %>
 <% end %>

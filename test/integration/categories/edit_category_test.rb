@@ -38,7 +38,7 @@ class EditCategoryTest < CategoriesTestBase
     visit edit_category_path(@category)
     page.click_link 'Cancelar'
 
-    assert_equal category_path(@category), current_path
+    assert_equal categories_path, current_path
   end
 
   test "confirm delete from edit" do

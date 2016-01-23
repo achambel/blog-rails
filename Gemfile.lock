@@ -103,6 +103,8 @@ GEM
       pry
       pry-byebug
       pry-remote
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     pry-remote (0.1.8)
       pry (~> 0.9)
       slop (~> 3.0)
@@ -174,6 +176,7 @@ DEPENDENCIES
   minitest-utils
   pg
   pry-meta
+  pry-rails
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   semantic-ui-sass!

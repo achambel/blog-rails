@@ -1,0 +1,23 @@
+<div class="ui icon dropdown teal button">
+  <i class="wrench icon"></i>
+    <div class="menu">
+      <%= link_to object, class: "item" do %>
+          <i class="search icon"></i>
+          <%= t('views.defaults.show') %>
+      <% end %>
+
+      <a href=<%= send("edit_#{object.class.name.downcase}_path", object) %> class="item">
+          <i class="edit icon"></i>
+          <%= t('views.defaults.edit') %>
+      </a>
+
+      <%= link_to object,
+              method: :delete,
+              data: { confirm: t('views.defaults.confirm') },
+              class: "item" do %>
+          <i class="trash icon"></i>
+          <%= t('views.defaults.delete') %>
+      <% end %>
+
+    </div>
+</div>

@@ -15,10 +15,5 @@
 <p><%= l(@user.updated_at) %></p>
 
 <p>
-  <%= link_to t('views.defaults.edit'), edit_user_path(@user) %>
-  <%= link_to t('views.defaults.delete'), user_path(@user) ,
-                          method: :delete,
-                          data: { confirm: t('views.defaults.confirm') }
-                          %>
-  <%= link_to t('views.defaults.back'), users_path %>
+  <%= render 'partials/show_buttons', object: @user %>
 </p>

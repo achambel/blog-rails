@@ -16,30 +16,7 @@
       <td><i class="folder icon"></i><%= category.name %></td>
       <td><%= category.description %></td>
       <td>
-        <div class="ui icon dropdown teal button">
-          <i class="wrench icon"></i>
-          <div class="menu">
-
-            <%= link_to category, class: "item" do %>
-              <i class="search icon"></i>
-              <%= t('views.defaults.show') %>
-            <% end %>
-
-            <%= link_to edit_category_path(category), class: "item" do %>
-              <i class="edit icon"></i>
-              <%= t('views.defaults.edit') %>
-            <% end %>
-
-            <%= link_to category_path(category),
-                method: :delete,
-                data: { confirm: t('views.defaults.confirm') },
-                class: "item" do %>
-                <i class="trash icon"></i>
-                <%= t('views.defaults.delete') %>
-            <% end %>
-
-          </div>
-        </div>
+        <%= render 'partials/dropdown_actions', object: category %>
       </td>
     </tr>
   <% end %>

@@ -45,7 +45,7 @@ class NewUserTest < UsersTestBase
   test "go to users from new" do
     login_as(@user)
     visit new_user_path
-    page.click_link 'Voltar'
+    page.click_link 'Cancelar'
 
     assert_equal users_path, current_path
   end

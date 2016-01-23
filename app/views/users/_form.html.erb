@@ -28,5 +28,5 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= f.submit nil, class: 'ui teal button' %>
+  <%= render 'partials/new_edit_delete_buttons', form: f, object: @user %>
 <% end %>

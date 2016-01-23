@@ -1,0 +1,16 @@
+<div class="ui buttons">
+  <%= link_to t('views.defaults.cancel'), send("#{object.class.name.tableize}_path"), class: 'ui button' %>
+    <div class="or" data-text=<%= t('views.defaults.or') %>></div>
+  <%= form.submit nil, class: 'ui teal button' %>
+</div>
+
+<% if current_page?(send("edit_#{object.class.name.downcase}_path", object.id || -1)) %>
+  <p>
+    <%= link_to object, method: :delete,
+                        data: { confirm: t('views.defaults.confirm') },
+                        class: 'ui negative mini button' do %>
+        <i class="trash icon"></i>
+        <%= t('views.defaults.delete') %>
+    <% end %>
+  </p>
+<% end %>

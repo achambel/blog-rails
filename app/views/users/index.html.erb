@@ -1,23 +1,21 @@
 <h1><%= User.model_name.human(:count => 2) %></h1>
-<%= link_to t('views.defaults.new'), new_user_path %>
-<table>
-  <tr>
-    <td><%= User.human_attribute_name(:name) %></td>
-    <td><%= User.human_attribute_name(:email) %></td>
-    <td colspan="3"><%= t('views.defaults.actions') %></td>
-  </tr>
+<%= link_to new_user_path, class: 'ui teal button' do %>
+  <i class="write icon"></i>
+  <%= t('views.defaults.new') %>
+<% end %>
+<table class="ui selectable striped table">
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= t('views.defaults.actions') %></th>
+    </tr>
+  </thead>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
+      <td><i class="user icon"></i><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= link_to t('views.defaults.show'), user_path(user) %></td>
-      <td><%= link_to t('views.defaults.edit'), edit_user_path(user) %></td>
-      <td><%=
-              link_to t('views.defaults.delete'),
-                user_path(user),
-                method: :delete,
-                data: { confirm: t('views.defaults.confirm') }
-          %></td>
+      <td><%= render 'partials/dropdown_actions', object: user %></td>
     </tr>
   <% end %>
 </table>

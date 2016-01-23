@@ -18,5 +18,5 @@
     <%= f.select :category_id, Category.all.collect {|c| [c.name, c.id] } %>
   </div>
 
-  <%= f.submit nil, class: 'ui teal button' %>
+  <%= render 'partials/new_edit_delete_buttons', form: f, object: @post %>
 <% end %>

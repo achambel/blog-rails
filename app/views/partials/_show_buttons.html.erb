@@ -1,0 +1,18 @@
+<%= link_to send("#{object.class.name.tableize}_path"), class: 'ui button' do %>
+  <i class="arrow left icon"></i>
+  <%= t('views.defaults.back') %>
+<% end %>
+
+<a href=<%= send("edit_#{object.class.name.downcase}_path", object) %>
+                                                        class='ui teal button'>
+  <i class="edit icon"></i>
+  <%= t('views.defaults.edit') %>
+</a>
+
+<%= link_to object,
+            method: :delete,
+            data: { confirm: t('views.defaults.confirm') },
+            class: 'ui negative button' do %>
+  <i class="trash icon"></i>
+  <%= t('views.defaults.delete') %>
+<% end %>

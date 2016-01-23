@@ -43,7 +43,7 @@ class NewCategoryTest < CategoriesTestBase
     login_as(@user)
 
     visit new_category_path
-    page.click_link 'Voltar'
+    page.click_link 'Cancelar'
 
     assert_equal categories_path, current_path
   end

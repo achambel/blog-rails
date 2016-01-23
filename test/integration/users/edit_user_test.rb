@@ -37,7 +37,7 @@ class EditUserTest < UsersTestBase
     visit edit_user_path(@user)
     page.click_link 'Cancelar'
 
-    assert_equal user_path(@user), current_path
+    assert_equal users_path, current_path
   end
 
   test "confirm delete from edit" do
