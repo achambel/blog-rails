@@ -14,18 +14,21 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    login_as(@user)
+
     get :new
     assert_response :success
     assert_not_nil assigns(:post)
   end
 
   test "should create post" do
+    login_as(@user)
+
     assert_difference('Post.count') do
       post :create, post: {
         title: 'How to create an app rails',
         content: 'in development...',
-        category_id: @category,
-        user_id: @user
+        category_id: @category
       }
     end
 
@@ -33,6 +36,8 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should edit post" do
+    login_as(@user)
+
     get :edit, id: @post
     assert_response :success
     assert_not_nil assigns(:post)
@@ -40,6 +45,8 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should update post" do
+    login_as(@user)
+
     patch :update, id: @post, post: {
       title: 'How to configure docker with postgresql',
       content: 'Docker is...',
@@ -49,6 +56,8 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should destroy post" do
+    login_as(@user)
+
     assert_difference('Post.count', -1) do
       delete :destroy, id: @post
     end

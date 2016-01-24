@@ -9,6 +9,10 @@
 <body>
   <div class="ui inverted menu">
     <%= link_to 'Blog Rails', root_path, class: 'header item' %>
+    <%= link_to Category.model_name.human(:count => 2),
+                  categories_path, class: 'item' %>
+    <%= link_to User.model_name.human(:count => 2),
+                  users_path, class: 'item' %>
     <div class="right menu">
       <div class="item">
         <div class="ui transparent inverted icon input">
@@ -17,7 +21,7 @@
         </div>
       </div>
       <% if logged_in? %>
-        <div class="ui labeled icon dropdown black button">
+        <div class="ui labeled icon simple dropdown black button">
           <i class="user icon"></i>
           <span class="text"><%= current_user.name %></span>
           <div class="menu">

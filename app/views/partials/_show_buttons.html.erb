@@ -3,6 +3,7 @@
   <%= t('views.defaults.back') %>
 <% end %>
 
+<% if logged_in? %>
 <a href=<%= send("edit_#{object.class.name.downcase}_path", object) %>
                                                         class='ui teal button'>
   <i class="edit icon"></i>
@@ -15,4 +16,5 @@
             class: 'ui negative button' do %>
   <i class="trash icon"></i>
   <%= t('views.defaults.delete') %>
+<% end %>
 <% end %>

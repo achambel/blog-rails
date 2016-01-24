@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_user, except: [:index, :show]
 
   def index
     @posts = Post.all
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
       redirect_to @post, flash: { success: I18n.t('views.defaults.notice.save') }
     else
@@ -43,6 +45,6 @@ class PostsController < ApplicationController
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :user_id)
+    params.require(:post).permit(:title, :content, :category_id)
   end
 end

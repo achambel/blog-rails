@@ -1,4 +1,4 @@
-<h1><%= Category.model_name.human %></h1>
+<h1><%= Post.model_name.human %></h1>
 
 <%= render 'partials/error_messages', object: @post %>
 
@@ -15,7 +15,9 @@
 
   <div class="field">
     <%= f.label :category_id %>
-    <%= f.select :category_id, Category.all.collect {|c| [c.name, c.id] } %>
+    <%= f.select :category_id,
+          Category.all.collect {|c| [c.name, c.id] },
+          { include_blank: true } %>
   </div>
 
   <%= render 'partials/new_edit_delete_buttons', form: f, object: @post %>

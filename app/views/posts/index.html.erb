@@ -1,3 +1,5 @@
+<h1><%= Post.model_name.human(:count => 2) %></h1>
+<%= render 'partials/new_button', object: Post %>
 <div class="ui items">
   <% @posts.each do |post| %>
   <div class="item">
@@ -5,7 +7,8 @@
       <i class="book icon"></i>
       <%= link_to post.title, post_path(post), class: 'header' %>
       <div class="description">
-        <%= "#{t('views.defaults.in')} #{post.category.name}" %>
+        <i class="folder icon"></i>
+        <%= post.category.name %>
         <i class="calendar icon"></i>
         <%= "#{t('views.defaults.ago')} #{time_ago_in_words(post.created_at)}" %>
       </div>

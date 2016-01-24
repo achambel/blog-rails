@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <%= link_to send("new_#{object.name.downcase}_path"),
+              class: 'ui teal button' do %>
+    <i class="write icon"></i>
+    <%= t('views.defaults.new') %>
+  <% end %>
+<% end %>

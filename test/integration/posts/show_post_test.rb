@@ -1,10 +1,6 @@
-require 'test_helper'
+require_relative 'posts_test_base'
 
-class ShowPostTest < ActionDispatch::IntegrationTest
-
-  setup do
-    @post = posts(:post_one)
-  end
+class ShowPostTest < PostsTestBase
 
   test "should show post details" do
 
@@ -25,6 +21,8 @@ class ShowPostTest < ActionDispatch::IntegrationTest
   end
 
   test "go to edit page from show" do
+    login_as(@user)
+
     visit post_path(@post)
     page.click_link('Editar')
 
@@ -33,6 +31,8 @@ class ShowPostTest < ActionDispatch::IntegrationTest
 
   test "confirm delete from show" do
     Capybara.current_driver = :webkit
+
+    login_as(@user)
 
     visit post_path(@post)
 
@@ -46,6 +46,8 @@ class ShowPostTest < ActionDispatch::IntegrationTest
 
   test "dismiss delete action from show" do
     Capybara.current_driver = :webkit
+
+    login_as(@user)
 
     visit post_path(@post)
 

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_user, only: [:show, :new, :index, :edit]
+  before_action :require_logged_user
 
   def index
     @categories = Category.all

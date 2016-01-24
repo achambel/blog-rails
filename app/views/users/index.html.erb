@@ -1,8 +1,5 @@
 <h1><%= User.model_name.human(:count => 2) %></h1>
-<%= link_to new_user_path, class: 'ui teal button' do %>
-  <i class="write icon"></i>
-  <%= t('views.defaults.new') %>
-<% end %>
+<%= render 'partials/new_button', object: User %>
 <table class="ui selectable striped table">
   <thead>
     <tr>
