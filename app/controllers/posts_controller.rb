@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to @post, flash: { success: I18n.t('views.defaults.notice.save') }
+      redirect_to @post, flash: { success: I18n.t('views.defaults.crud.save') }
     else
       render :new
     end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, flash: { success: I18n.t('views.defaults.notice.update') }
+      redirect_to @post, flash: { success: I18n.t('views.defaults.crud.update') }
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, flash: { info: I18n.t('views.defaults.notice.destroy') }
+    redirect_to posts_path, flash: { warning: I18n.t('views.defaults.crud.destroy') }
   end
 
   private

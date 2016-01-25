@@ -42,9 +42,10 @@
   </div>
 
   <div class="ui main text container">
+    <% icons = {success: 'smile', error: 'frown', info: 'info', warning: 'warning'} %>
     <% flash.each do |type, message| %>
       <%= content_tag :div, nil, class: "ui icon #{type} message" do %>
-        <%= content_tag :i, nil, class: "#{type} sign icon" %>
+        <%= content_tag :i, nil, class: "#{icons[type.to_sym]} sign icon" %>
         <%= content_tag :div, message, class: "content" %>
       <% end %>
     <% end %>

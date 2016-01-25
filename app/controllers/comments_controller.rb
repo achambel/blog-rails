@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     if @comment.save
-      redirect_to post_path(@post), notice: I18n.t('views.defaults.notice.save')
+      redirect_to post_path(@post), flash: { sucess: I18n.t('views.defaults.crud.save') }
     else
       render :new
     end
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to @comment.post, notice: I18n.t('views.defaults.notice.update')
+      redirect_to @comment.post, flash: { sucess: I18n.t('views.defaults.crud.update') }
     else
       render :edit
     end
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post), notice: I18n.t('views.defaults.notice.destroy')
+    redirect_to post_path(@post), flash: { warning: I18n.t('views.defaults.crud.destroy') }
   end
 
   private

@@ -2,7 +2,7 @@
 pt-BR:
     views:
       defaults:
-        notice:
+        crud:
           save: "Registro salvo com sucesso!"
           update: "Registro atualizado com sucesso!"
           destroy: "Registro removido com sucesso!"
@@ -20,3 +20,4 @@ pt-BR:
         author: "Autor"
         home: "Início"
         or: "ou"
+        no_results: "Nenhum resultado encontrado."

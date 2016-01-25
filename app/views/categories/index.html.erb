@@ -1,20 +1,3 @@
 <h1><%= Category.model_name.human(:count => 2) %></h1>
 <%= render 'partials/new_button', object: Category %>
-<table class="ui selectable striped table">
-  <thead>
-    <tr>
-      <th><%= Category.human_attribute_name(:name) %></th>
-      <th><%= Category.human_attribute_name(:description) %></th>
-      <th><%= t('views.defaults.actions') %></th>
-    </tr>
-  </thead>
-  <% @categories.each do |category| %>
-    <tr>
-      <td><i class="folder icon"></i><%= category.name %></td>
-      <td><%= category.description %></td>
-      <td>
-        <%= render 'partials/dropdown_actions', object: category %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= grid_for @categories, columns: [:name, :description] %>

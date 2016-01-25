@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: I18n.t('views.defaults.notice.save')
+      redirect_to @user, flash: { success: I18n.t('views.defaults.crud.save') }
     else
       render :new
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: I18n.t('views.defaults.notice.update')
+      redirect_to @user, flash: { success: I18n.t('views.defaults.crud.update') }
     else
       render :edit
     end
@@ -36,9 +36,9 @@ class UsersController < ApplicationController
   def destroy
     if @user.id != current_user.id
       @user.destroy
-      redirect_to users_path, notice: I18n.t('views.defaults.notice.destroy')
+      redirect_to users_path, flash: { warning: I18n.t('views.defaults.crud.destroy') }
     else
-      redirect_to :back, notice: I18n.t('views.defaults.notice.not_destroy_yourself')
+      redirect_to :back, flash: { error: I18n.t('views.defaults.crud.not_destroy_yourself') }
     end
   end
 

@@ -10,7 +10,7 @@ class LoginController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      redirect_to login_path, flash: { warning: I18n.t('views.login.login_fail') }
+      redirect_to login_path, flash: { error: I18n.t('views.login.login_fail') }
     end
   end
 

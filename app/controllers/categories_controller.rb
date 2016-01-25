@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category, notice: I18n.t('views.defaults.notice.save')
+      redirect_to @category, flash: { success: I18n.t('views.defaults.crud.save') }
     else
       render :new
     end
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: I18n.t('views.defaults.notice.update')
+      redirect_to @category, flash: { success: I18n.t('views.defaults.crud.update') }
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path, notice: I18n.t('views.defaults.notice.destroy')
+    redirect_to categories_path, flash: { warning: I18n.t('views.defaults.crud.destroy') }
   end
 
   private
