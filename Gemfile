@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.3'
+
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -22,3 +24,7 @@ group :test do
   gem 'capybara-webkit'
 end
 
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
+end
