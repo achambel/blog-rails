@@ -1,0 +1,15 @@
+<div class="ui piled segment">
+  <h4>
+    <i class="comment icon"></i>
+    <span class="user">
+      <%= comment.user.name %>
+    </span>
+
+    <i class="calendar icon"></i>
+    <span class="calendar">
+      <%= l(comment.created_at, format: :short) %>
+    </span>
+  </h4>
+  <p><%= comment.content %></p>
+</div>
+

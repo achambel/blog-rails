@@ -9,8 +9,8 @@ class ShowPostTest < PostsTestBase
     assert_equal post_path(@post), current_path
     assert page.find('h3', text: /^#{@post.title}$/)
     assert page.find('p', text: /^#{@post.content}$/)
-    assert page.find('span', text: /#{@post.user.name}/)
-    assert page.find('span', text: /#{I18n.l(@post.created_at, format: :long)}/)
+    assert page.find('#post-author', text: /#{@post.user.name}/)
+    assert page.find('#post-calendar', text: /#{I18n.l(@post.created_at, format: :short)}/)
   end
 
   test "go back from show post" do

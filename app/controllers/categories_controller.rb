@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :require_logged_user
 
   def index
-    @categories = Category.all
+    @categories = Category.all.page params[:page]
   end
 
   def show

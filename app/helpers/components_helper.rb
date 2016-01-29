@@ -30,6 +30,18 @@ module ComponentsHelper
       end
   end
 
+  def button_to(text, url, options = {})
+    defaults = { class: 'ui teal button', icon: nil }
+    options = defaults.merge!(options)
+
+    link_to send(url),
+            class: options[:class] do
+      concat content_tag(:i, nil, class: "#{options[:icon]} icon")
+      concat text
+    end
+  end
+
+private
   def header(model, attrs, options)
     content_tag :thead do
       content_tag :tr do

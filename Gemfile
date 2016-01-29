@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt', '~> 3.1.7'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry-rails'

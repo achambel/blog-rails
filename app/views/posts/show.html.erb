@@ -1,4 +1,4 @@
-<article>
+<article class="ui raised segment">
   <header>
     <h3>
       <i class="book icon"></i>
@@ -8,14 +8,14 @@
   <section>
     <p><%= @post.content %></p>
     <p>
-      <span>
+      <span id="post-author">
         <i class="user icon"></i>
         <%= "#{t('views.defaults.author')}: #{@post.user.name} " %>
       </span>
 
-      <span>
+      <span id="post-calendar">
         <i class="calendar icon"></i>
-        <%= l(@post.created_at, format: :long) %>
+        <%= l(@post.created_at, format: :short) %>
       </span>
     </p>
     <p>
@@ -23,3 +23,16 @@
     </p>
   </section>
 </article>
+
+<h5>
+  <% total_comments = @post.comments.count %>
+  <span class="ui label">
+    <i class="comments icon"></i>
+    <%= total_comments %>
+  </span>
+  <%= Comment.model_name.human(count: total_comments) %>
+</h5>
+
+<div class="ui divider"></div>
+
+<%= render @post.comments %>
