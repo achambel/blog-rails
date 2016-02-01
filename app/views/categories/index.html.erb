@@ -1,4 +1,4 @@
 <h1><%= Category.model_name.human(:count => 2) %></h1>
-<%= button_to t('views.defaults.new'), :new_category_path, icon: 'folder' if logged_in? %>
+<%= button_to t('views.defaults.new'), new_category_path, icon: 'folder' if logged_in? %>
 <%= grid_for @categories, columns: [:name, :description] %>
 <%= paginate @categories %>

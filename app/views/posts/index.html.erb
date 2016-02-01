@@ -1,5 +1,5 @@
 <h1><%= Post.model_name.human(:count => 2) %></h1>
-<%= button_to t('views.defaults.new'), :new_post_path, icon: 'book' if logged_in? %>
+<%= button_to t('views.defaults.new'), new_post_path, icon: 'book' if logged_in? %>
 <div class="ui items">
   <% @posts.each do |post| %>
   <div class="ui raised segment">

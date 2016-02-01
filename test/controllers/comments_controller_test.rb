@@ -8,24 +8,18 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should create comment" do
+    login_as(@user)
+
     assert_difference('Comment.count') do
       post :create, post_id: @post, comment: {
         content: 'Great post John',
-        user_id: @user,
         post_id: @post
-      }
+      }, format: :json
     end
 
-    assert_redirected_to post_path(@post)
-  end
-
-  test "should update comment" do
-    # /posts/:post_id/comments/:id
-    patch :update, post_id: @comment.post, id: @comment, comment: {
-      content: 'Amazing post John!'
-    }
-
-    assert_redirected_to post_path(assigns(:post))
+    assert_response :ok
+    binding.pry
+    assert_equal assigns(:comment).to_json, @response.body
   end
 
   test "should destroy comment" do

@@ -8,6 +8,8 @@ extend ActiveSupport::Concern
 
   private
   def require_logged_user
+    session[:target_url] = request.url
+
     redirect_to login_path,
       flash: { info: I18n.t('views.login.login_required') } unless logged_in?
   end

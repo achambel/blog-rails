@@ -1,0 +1,4 @@
+<%= form_tag post_comments_path(@post), remote: true, class: 'ui form' do %>
+  <%= text_area(:comment, :content, class: 'comment field', rows: 2) %>
+  <%= submit_tag t('views.comments.to_comment'), class: 'ui teal mini button' %>
+<% end %>

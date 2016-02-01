@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'bcrypt', '~> 3.1.7'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'kaminari'
+gem 'puma'
 
 group :development, :test do
   gem 'pry-rails'
@@ -26,5 +27,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'puma'
 end

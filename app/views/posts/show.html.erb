@@ -15,7 +15,7 @@
 
       <span id="post-calendar">
         <i class="calendar icon"></i>
-        <%= l(@post.created_at, format: :short) %>
+        <%= l(@post.created_at, format: :long) %>
       </span>
     </p>
     <p>
@@ -28,11 +28,24 @@
   <% total_comments = @post.comments.count %>
   <span class="ui label">
     <i class="comments icon"></i>
-    <%= total_comments %>
+    <span id="total"><%= total_comments %></span>
   </span>
-  <%= Comment.model_name.human(count: total_comments) %>
+
+  <span>
+    <%= Comment.model_name.human(count: total_comments) %>
+  </span>
 </h5>
 
-<div class="ui divider"></div>
+<% if logged_in? %>
+  <%= render 'comments/form' %>
+<% else %>
+  <%= button_to(t('views.login.to_comment'), login_path,
+                                             icon: 'sign in',
+                                             class: 'ui teal mini button')
+                                              %>
+<% end %>
 
+<div class="ui divider"></div>
+<div id="comment-message"></div>
+<div id="comments"></div>
 <%= render @post.comments %>

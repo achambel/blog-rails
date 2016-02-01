@@ -1,0 +1,14 @@
+<% if @comment.errors.any? %>
+  $("#comment-message")
+    .html("<%= escape_javascript(render 'partials/error_messages', object: @comment) %>")
+    .transition('shake')
+    .fadeOut(10000);
+<% else %>
+  $("<%= escape_javascript(render @comment) %>")
+    .prependTo("#comments")
+    .transition('jiggle');
+
+  $("#total").html(<%= @post.comments.count %>);
+
+  $(".comment").val('');
+<% end %>

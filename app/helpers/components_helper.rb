@@ -34,7 +34,7 @@ module ComponentsHelper
     defaults = { class: 'ui teal button', icon: nil }
     options = defaults.merge!(options)
 
-    link_to send(url),
+    link_to url,
             class: options[:class] do
       concat content_tag(:i, nil, class: "#{options[:icon]} icon")
       concat text
