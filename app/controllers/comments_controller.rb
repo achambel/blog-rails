@@ -18,8 +18,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    redirect_to post_path(@post), flash: { warning: I18n.t('views.defaults.crud.destroy') }
+
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to post_path(@post), flash: { success: I18n.t('views.defaults.crud.destroy') }
+    else
+      redirect_to post_path(@post), flash: { error: I18n.t('views.comments.no_allow_destroy') }
+    end
+
   end
 
   private

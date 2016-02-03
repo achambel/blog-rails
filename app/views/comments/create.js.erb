@@ -8,7 +8,8 @@
     .prependTo("#comments")
     .transition('jiggle');
 
-  $("#total").html(<%= @post.comments.count %>);
-
+  <% total_comments = @post.comments.count %>
+  $("#total").html("<%= total_comments %>");
+  $("#total_comments_text").html("<%= Comment.model_name.human(count: total_comments) %>");
   $(".comment").val('');
 <% end %>

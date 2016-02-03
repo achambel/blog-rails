@@ -3,3 +3,4 @@ pt-BR:
   views:
     comments:
       to_comment: "Comentar"
+      no_allow_destroy: "Não é permitido remover um comentário de outro usuário!"

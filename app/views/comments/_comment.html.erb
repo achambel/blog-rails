@@ -9,6 +9,15 @@
     <span class="calendar">
       <%= l(comment.created_at, format: :long) %>
     </span>
+
+    <%= link_to [comment.post, comment],
+            method: :delete,
+            data: { confirm: t('views.defaults.confirm') },
+            class: "ui red mini button" do %>
+        <i class="trash icon"></i>
+        <%= t('views.defaults.delete') %>
+    <% end  if logged_in? && current_user == comment.user %>
+
   </h4>
   <p><%= comment.content %></p>
 </div>
