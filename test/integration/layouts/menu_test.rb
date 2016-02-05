@@ -11,7 +11,7 @@ class MenuTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
   end
 
-  test "should display just private menu itens" do
+  test "should display both private and public menu itens" do
     user = users(:alice)
     login_as(user)
 
