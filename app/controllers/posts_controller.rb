@@ -3,7 +3,14 @@ class PostsController < ApplicationController
   before_action :require_logged_user, except: [:index, :show]
 
   def index
-    @posts = Post.all.page params[:page]
+    category_id = params[:category_id]
+
+    if category_id
+      @posts = Post.where(category: category_id).page params[:page]
+    else
+      @posts = Post.all.page params[:page]
+    end
+
   end
 
   def show

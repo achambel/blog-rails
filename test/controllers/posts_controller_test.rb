@@ -7,10 +7,25 @@ class PostsControllerTest < ActionController::TestCase
     @user = users(:alice)
   end
 
-  test "should get index" do
+  test "should get all posts" do
     get :index
+
+    posts = assigns(:posts)
+
     assert_response :success
-    assert_not_nil assigns(:posts)
+    assert_not_nil posts
+    assert_equal Post.all.page, posts
+  end
+
+  test "should get all posts from a category" do
+    category = @post.category
+    get :index, category_id: category
+
+    posts = assigns(:posts)
+
+    assert_response :success
+    assert_not_nil posts
+    assert_equal category.posts.page, posts
   end
 
   test "should get new" do
