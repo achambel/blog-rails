@@ -17,14 +17,41 @@ class PostsControllerTest < ActionController::TestCase
     assert_equal Post.all.page, posts
   end
 
-  test "should get all posts from a category" do
-    category = @post.category
-    get :index, category_id: category
+  test "should get all posts from a user" do
+    dhh = User.create(name: 'David',
+                       email: 'dhh@mail.com',
+                       password: 'test',
+                       password_confirmation: 'test')
+
+    Post.create(title: "Unique post from user #{dhh.name}",
+                content: 'hi',
+                category: @category,
+                user: dhh)
+
+    get :by_user, user_id: dhh
 
     posts = assigns(:posts)
 
-    assert_response :success
+    assert_template :index
     assert_not_nil posts
+    assert_equal dhh.posts.page.count, posts.count
+    assert_equal dhh.posts.page, posts
+  end
+
+  test "should get all posts from a category" do
+    category = Category.create(name: 'Health')
+    Post.create(title: 'Unique post',
+                content: 'hi',
+                category: category,
+                user: @user)
+
+    get :by_category, category_id: category
+
+    posts = assigns(:posts)
+
+    assert_template :index
+    assert_not_nil posts
+    assert_equal category.posts.page.count, posts.count
     assert_equal category.posts.page, posts
   end
 

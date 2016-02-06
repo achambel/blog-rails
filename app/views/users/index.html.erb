@@ -1,5 +1,5 @@
 <h1><%= User.model_name.human(:count => 2) %></h1>
 <%= button_to t('views.defaults.new'), new_user_path, icon: 'user' if logged_in? %>
-<%= grid_for @users, columns: [:name, :email] %>
+<%= grid_for @users, columns: [{:name => 'posts'}, :email] %>
 <%= paginate @users %>
 

@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :categories do
-    get 'posts' => 'posts#index'
+    get 'posts' => 'posts#by_category'
   end
 
   resources :posts do
     resources :comments
   end
-  resources :users
+
+  resources :users do
+    get 'posts' => 'posts#by_user'
+  end
 
   get 'login' => 'login#new'
   post 'login' => 'login#create'

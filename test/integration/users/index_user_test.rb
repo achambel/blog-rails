@@ -17,4 +17,12 @@ class IndexUserTest < UsersTestBase
     end
   end
 
+  test "should show link to user_posts" do
+    login_as(@user)
+
+    visit users_path
+
+    assert page.find_link(@user.name, href: user_posts_path(@user))
+  end
+
 end

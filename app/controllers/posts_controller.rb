@@ -1,16 +1,21 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_user, except: [:index, :show]
+  before_action :require_logged_user, except: [:index, :by_category, :by_user, :show]
 
   def index
+    @posts = Post.all.page params[:page]
+  end
+
+  def by_category
     category_id = params[:category_id]
+    @posts = Post.where(category: category_id).page params[:page]
+    render :index
+  end
 
-    if category_id
-      @posts = Post.where(category: category_id).page params[:page]
-    else
-      @posts = Post.all.page params[:page]
-    end
-
+  def by_user
+    user_id = params[:user_id]
+    @posts = Post.where(user: user_id).page params[:page]
+    render :index
   end
 
   def show
