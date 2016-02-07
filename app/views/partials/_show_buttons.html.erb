@@ -9,12 +9,15 @@
   <i class="edit icon"></i>
   <%= t('views.defaults.edit') %>
 </a>
-
-<%= link_to object,
+  <%= link_to object,
             method: :delete,
-            data: { confirm: t('views.defaults.confirm') },
+            data: {
+              header: t('views.defaults.attention'),
+              confirm: t('views.defaults.destroy_confirmation', target: object),
+              cancel: t('views.defaults.cancel'),
+              ok: t('views.defaults.yes') },
             class: 'ui negative button' do %>
-  <i class="trash icon"></i>
-  <%= t('views.defaults.delete') %>
-<% end %>
+    <i class="trash icon"></i>
+    <%= t('views.defaults.delete') %>
+  <% end %>
 <% end %>

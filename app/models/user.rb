@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: EMAIL_FORMAT
   validates :email, uniqueness: true
   has_secure_password
+
+  def to_s
+    self.name
+  end
 end

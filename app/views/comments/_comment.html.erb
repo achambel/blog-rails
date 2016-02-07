@@ -12,7 +12,11 @@
 
     <%= link_to [comment.post, comment],
             method: :delete,
-            data: { confirm: t('views.defaults.confirm') },
+            data: {
+              header: t('views.defaults.attention'),
+              confirm: t('views.defaults.destroy_confirmation', target: comment.content),
+              cancel: t('views.defaults.cancel'),
+              ok: t('views.defaults.yes') },
             class: "ui red mini button" do %>
         <i class="trash icon"></i>
         <%= t('views.defaults.delete') %>

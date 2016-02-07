@@ -47,11 +47,10 @@ class EditUserTest < UsersTestBase
     login_as(user)
     visit edit_user_path(@user)
 
-    page.accept_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.positive', text: 'Sim').trigger('click')
 
-    assert page.has_text? 'Registro removido com sucesso!'
+    assert page.find('div.content', text: /^Registro removido com sucesso!$/)
     assert_equal users_path, current_path
   end
 
@@ -61,9 +60,8 @@ class EditUserTest < UsersTestBase
     login_as(@user)
     visit edit_user_path(@user)
 
-    page.dismiss_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.negative', text: 'Cancelar').trigger('click')
 
     assert_equal edit_user_path(@user), current_path
   end

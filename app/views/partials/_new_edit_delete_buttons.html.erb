@@ -7,8 +7,12 @@
 <% if current_page?(send("edit_#{object.class.name.downcase}_path", object.id || -1)) %>
   <p>
     <%= link_to object, method: :delete,
-                        data: { confirm: t('views.defaults.confirm') },
-                        class: 'ui negative mini button' do %>
+              data: {
+              header: t('views.defaults.attention'),
+              confirm: t('views.defaults.destroy_confirmation', target: object),
+              cancel: t('views.defaults.cancel'),
+              ok: t('views.defaults.yes') },
+              class: 'ui negative mini button' do %>
         <i class="trash icon"></i>
         <%= t('views.defaults.delete') %>
     <% end %>

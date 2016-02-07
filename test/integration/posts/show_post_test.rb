@@ -36,9 +36,8 @@ class ShowPostTest < PostsTestBase
 
     visit post_path(@post)
 
-    page.accept_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.positive', text: 'Sim').trigger('click')
 
     assert page.find('div.content', text: /^Registro removido com sucesso!$/)
     assert_equal posts_path, current_path
@@ -51,9 +50,8 @@ class ShowPostTest < PostsTestBase
 
     visit post_path(@post)
 
-    page.dismiss_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.negative', text: 'Cancelar').trigger('click')
 
     assert_equal post_path(@post), current_path
   end

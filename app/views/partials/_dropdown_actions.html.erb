@@ -13,7 +13,11 @@
 
       <%= link_to object,
               method: :delete,
-              data: { confirm: t('views.defaults.confirm') },
+              data: {
+              header: t('views.defaults.attention'),
+              confirm: t('views.defaults.destroy_confirmation', target: object),
+              cancel: t('views.defaults.cancel'),
+              ok: t('views.defaults.yes') },
               class: "item" do %>
           <i class="trash icon"></i>
           <%= t('views.defaults.delete') %>

@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
   validates :title, length: { minimum: 3, maximum: 255 }
   validates_presence_of :content, :category, :user
   default_scope { order('created_at DESC') }
+
+  def to_s
+    self.title
+  end
 end

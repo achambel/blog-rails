@@ -34,11 +34,10 @@ class ShowCategoryTest < CategoriesTestBase
 
     visit category_path(@category)
 
-    page.accept_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.positive', text: 'Sim').trigger('click')
 
-    assert page.has_text? 'Registro removido com sucesso!'
+    assert page.find('div.content', text: /^Registro removido com sucesso!$/)
     assert_equal categories_path, current_path
   end
 
@@ -49,9 +48,8 @@ class ShowCategoryTest < CategoriesTestBase
 
     visit category_path(@category)
 
-    page.dismiss_confirm 'Confirma esta ação?' do
-      page.click_link 'Remover'
-    end
+    page.click_link 'Remover'
+    page.find('.negative', text: 'Cancelar').trigger('click')
 
     assert_equal category_path(@category), current_path
   end

@@ -12,9 +12,8 @@ class DestroyCommentTest < CommentsTestBase
     page.find('#comment_content').set("Alice's comment")
     page.click_button 'Comentar'
 
-    page.accept_confirm 'Confirma esta ação?' do
-      page.find('#comments a.button', text: 'Remover').click
-    end
+    page.find('#comments a.button', text: 'Remover').click
+    page.find('.positive', text: 'Sim').trigger('click')
 
     total_after = page.find('#total').text.to_i
 
