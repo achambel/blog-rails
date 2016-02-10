@@ -8,9 +8,16 @@
     <%= f.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= f.label :content %>
+  <div class="ui top attached tabular menu">
+    <a class="item active" data-tab="first">
+      <%= Post.human_attribute_name :content %>
+    </a>
+    <a class="item" data-tab="preview"><%= t('.preview') %></a>
+  </div>
+  <div class="ui bottom attached tab segment active" data-tab="first">
     <%= f.text_area :content %>
+  </div>
+  <div id="preview" class="ui bottom attached tab segment" data-tab="preview">
   </div>
 
   <div class="field">

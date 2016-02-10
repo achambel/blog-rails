@@ -6,7 +6,14 @@ class Post < ActiveRecord::Base
   validates_presence_of :content, :category, :user
   default_scope { order('created_at DESC') }
 
+  before_save :generate_html
+
   def to_s
     self.title
+  end
+
+  private
+  def generate_html
+    self.content_html = RDiscount.new(self.content).to_html
   end
 end

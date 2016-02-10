@@ -6,7 +6,7 @@
     </h3>
   </header>
   <section>
-    <p><%= @post.content %></p>
+    <%= raw @post.content_html %>
     <p>
       <span id="post-author">
         <i class="user icon"></i>

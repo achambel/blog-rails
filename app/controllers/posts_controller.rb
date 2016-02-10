@@ -51,6 +51,13 @@ class PostsController < ApplicationController
     redirect_to posts_path, flash: { warning: I18n.t('views.defaults.crud.destroy') }
   end
 
+  def preview
+    @preview = RDiscount.new(params[:content]).to_html
+    respond_to do |format|
+      format.json { render json: @preview }
+    end
+  end
+
   private
   def set_post
     @post = Post.find(params[:id])

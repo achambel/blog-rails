@@ -8,7 +8,7 @@ class EditPostTest < PostsTestBase
     visit edit_post_path(@post)
 
     page.fill_in 'Título', with: 'ActiveRecord'
-    page.fill_in 'Conteúdo', with: 'ActiveRecord is better of JPA'
+    page.fill_in 'post_content', with: 'ActiveRecord is better of JPA'
     page.select 'Category 1', from: 'Categoria'
 
     page.click_button 'Atualizar Post'
@@ -22,7 +22,7 @@ class EditPostTest < PostsTestBase
     visit edit_post_path(@post)
 
     page.fill_in 'Título', with: ''
-    page.fill_in 'Conteúdo', with: ''
+    page.fill_in 'post_content', with: ''
 
     page.click_button 'Atualizar Post'
 

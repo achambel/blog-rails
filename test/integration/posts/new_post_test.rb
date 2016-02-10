@@ -23,7 +23,7 @@ class NewPostTest < PostsTestBase
     visit posts_path
     page.click_link 'Novo'
     page.fill_in 'Título', with: 'Ice cream'
-    page.fill_in 'Conteúdo', with: 'I like ice cream!'
+    page.fill_in 'post_content', with: 'I like ice cream!'
     page.select 'Category 1', from: 'Categoria'
 
     page.click_button 'Criar Post'

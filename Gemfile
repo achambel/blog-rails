@@ -12,6 +12,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'kaminari'
 gem 'puma'
+gem 'rdiscount'
 
 group :development, :test do
   gem 'pry-rails'

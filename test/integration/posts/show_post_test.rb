@@ -5,7 +5,6 @@ class ShowPostTest < PostsTestBase
   test "should show post details" do
 
     visit post_path(@post)
-
     assert_equal post_path(@post), current_path
     assert page.find('h3', text: /^#{@post.title}$/)
     assert page.find('p', text: /^#{@post.content}$/)

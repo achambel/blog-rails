@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  post 'posts/preview' => 'posts#preview'
 
   resources :users do
     get 'posts' => 'posts#by_user'

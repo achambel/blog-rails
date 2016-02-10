@@ -3,11 +3,13 @@
 post_one:
   title: Post1
   content: MyText
+  content_html: <p>MyText</p>
   category: category1
   user: john
 
 post_two:
   title: Post2
   content: MyText
+  content_html: <p>MyText</p>
   category: category1
   user: alice

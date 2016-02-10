@@ -106,4 +106,31 @@ class PostsControllerTest < ActionController::TestCase
 
     assert_redirected_to posts_path
   end
+
+  test "should create a post with markdown sintax and show as html" do
+    login_as(@user)
+    post = Post.create(
+      title: 'A post with markdown sintax',
+      content: '**markdown**',
+      category: @category,
+      user: @user
+    )
+    content_html_expected = "<p><strong>markdown</strong></p>\n"
+
+    assert_equal content_html_expected, post.content_html
+  end
+
+  test "should update a post with markdown sintax and show as html" do
+    login_as(@user)
+    post = Post.find(@post.id)
+
+    post.content = '# This is an H1'
+    post.save
+
+    content_html_expected = "<h1>This is an H1</h1>\n"
+
+    assert_equal content_html_expected, post.content_html
+
+  end
+
 end
