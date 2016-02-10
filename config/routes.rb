@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :categories do
-    get 'posts' => 'posts#by_category'
+    get 'posts' => 'posts#index'
   end
 
   resources :posts do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'posts/preview' => 'posts#preview'
 
   resources :users do
-    get 'posts' => 'posts#by_user'
+    get 'posts' => 'posts#index'
   end
 
   get 'login' => 'login#new'

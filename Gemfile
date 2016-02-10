@@ -13,6 +13,7 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'kaminari'
 gem 'puma'
 gem 'rdiscount'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'pry-rails'

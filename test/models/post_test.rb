@@ -47,4 +47,13 @@ class PostTest < ActiveSupport::TestCase
 
     assert post1.created_at >= post2.created_at
   end
+
+  test "should generate a slug" do
+    post = Post.create(title: 'Hello World',
+                       content: 'Hello friendly_id!',
+                       category: @category,
+                       user: @user)
+
+    assert_equal 'hello-world', post.slug
+  end
 end

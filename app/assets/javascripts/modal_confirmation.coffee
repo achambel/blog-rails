@@ -24,7 +24,8 @@ $ ->
                 <i class="remove icon"></i>
                 #{link.data('cancel')}
               </a>
-              <a data-dismiss="modal" class="ui positive right labeled icon button">
+              <a data-dismiss="modal"
+                                class="ui positive right labeled icon button">
                 #{link.data('ok')}
                 <i class="checkmark icon"></i>
               </a>
@@ -32,6 +33,5 @@ $ ->
           </div>
 
            """
-    $(html).modal('setting', 'transition', 'horizontal flip')
-           .modal('show')
+    $(html).modal('setting', 'transition', 'horizontal flip').modal('show')
     $('#confirmationDialog .positive').on 'click', -> $.rails.confirmed(link)

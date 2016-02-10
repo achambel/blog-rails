@@ -8,6 +8,9 @@ class Post < ActiveRecord::Base
 
   before_save :generate_html
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
   def to_s
     self.title
   end
