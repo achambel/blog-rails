@@ -10,6 +10,9 @@
   <div class="ui inverted menu">
     <%= link_to 'Blog Rails', root_path, class: 'header item' %>
 
+    <a href="//github.com/achambel/blog-rails" class="ui item black button" title="<%= t('views.defaults.show_in_github') %>">
+          <i class="github icon"></i>
+    </a>
     <% if logged_in? %>
       <%= link_to Category.model_name.human(:count => 2),
                     categories_path, class: 'item' %>
