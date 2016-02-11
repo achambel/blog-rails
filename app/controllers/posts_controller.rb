@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:category_id]
-      @posts = Post.where(category: params[:category_id]).page params[:page]
+      @posts = Category.find(params[:category_id]).posts.page params[:page]
     elsif params[:user_id]
-      @posts = Post.where(user: params[:user_id]).page params[:page]
+      @posts = User.find(params[:user_id]).posts.page params[:page]
     else
       @posts = Post.all.page params[:page]
     end

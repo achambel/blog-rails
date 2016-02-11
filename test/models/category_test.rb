@@ -23,4 +23,10 @@ class CategoryTest < ActiveSupport::TestCase
     assert_equal(0, category.posts.size)
   end
 
+  test "should generate a slug" do
+    category = Category.create(name: 'Matérias de Programação',
+                               description: 'A category')
+    assert_equal 'materias-de-programacao', category.slug
+  end
+
 end

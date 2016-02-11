@@ -78,4 +78,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.destroyed?
     assert user.posts.empty?
   end
+
+  test "should generate a slug" do
+    user = User.create(name: 'José Silvério da Silva',
+                       password: 'test', password_confirmation: 'test')
+
+    assert_equal 'jose-silverio-da-silva', user.slug
+  end
 end

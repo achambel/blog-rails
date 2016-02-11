@@ -28,7 +28,7 @@ class PostsControllerTest < ActionController::TestCase
                 category: @category,
                 user: dhh)
 
-    get :index, user_id: dhh
+    get :index, user_id: dhh.id
 
     posts = assigns(:posts)
 
@@ -45,7 +45,7 @@ class PostsControllerTest < ActionController::TestCase
                 category: category,
                 user: @user)
 
-    get :index, category_id: category
+    get :index, category_id: category.id
 
     posts = assigns(:posts)
 

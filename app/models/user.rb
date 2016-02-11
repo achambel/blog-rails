@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   has_secure_password
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   def to_s
     self.name
   end
