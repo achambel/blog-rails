@@ -1,0 +1,25 @@
+language: ruby
+rvm:
+  - 2.2.3
+services:
+  - postgresql
+env: QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+addons:
+    apt:
+      sources:
+        - ubuntu-sdk-team
+      packages:
+        - qt5-default
+        - libqt5webkit5-dev
+        - qtdeclarative5-dev
+    code_climate:
+        repo_token: $CODE_CLIMATE_API_KEY
+    postgresql: '9.4'
+script: xvfb-run bundle exec rake
+before_script:
+  - psql -c 'create database blog_test;' -h localhost -U postgres
+  - cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: protected-dusk-60933
