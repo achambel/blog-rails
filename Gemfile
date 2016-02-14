@@ -25,6 +25,7 @@ group :test do
   gem 'capybara'
   gem 'minitest-utils'
   gem 'capybara-webkit'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :production do
