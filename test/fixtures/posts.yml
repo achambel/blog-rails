@@ -6,6 +6,7 @@ post_one:
   content_html: <p>MyText</p>
   category: category1
   user: john
+  slug: post-1
 
 post_two:
   title: Post2
@@ -13,3 +14,4 @@ post_two:
   content_html: <p>MyText</p>
   category: category1
   user: alice
+  slug: post-2

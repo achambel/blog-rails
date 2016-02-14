@@ -3,3 +3,4 @@
 category1:
   name: Category 1
   description: MyText
+  slug: category-1

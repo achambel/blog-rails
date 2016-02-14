@@ -20,10 +20,12 @@ class IndexCategoryTest < CategoriesTestBase
 
   test "should show link to category_posts" do
     login_as(@user)
-
     visit categories_path
 
-    assert page.find_link(@category.name, href: category_posts_path(@category))
+    assert page.first('td').find_link(
+      @category.name,
+      href: category_posts_path(@category)
+    )
   end
 
 end

@@ -3,9 +3,11 @@ john:
   whoami: I'm a legendary person.
   email: john.doe@mail.com
   password_digest: <%= BCrypt::Password.create('test') %>
+  slug: john-doe
 
 alice:
   name: Alice
   whoami: I'm another legendary person.
   email: alice@mail.com
   password_digest: <%= BCrypt::Password.create('test') %>
+  slug: alice

@@ -70,7 +70,7 @@ class PostsControllerTest < ActionController::TestCase
       post :create, post: {
         title: 'How to create an app rails',
         content: 'in development...',
-        category_id: @category
+        category_id: @category.id
       }
     end
 

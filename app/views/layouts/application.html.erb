@@ -27,8 +27,8 @@
         </div>
       </div>
       <% if logged_in? %>
-        <div class="ui labeled icon simple dropdown black button">
-          <i class="user icon"></i>
+        <div class="ui simple icon dropdown black button">
+          <%= gravatar_image(current_user.email) %>
           <span class="text"><%= current_user.name %></span>
           <div class="menu">
             <%= link_to logout_path,  method: 'delete', class: 'item' do %>
@@ -47,16 +47,34 @@
     </div>
   </div>
 
-  <div class="ui main text container">
-    <% icons = {success: 'smile', error: 'frown', info: 'info', warning: 'warning'} %>
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, nil, class: "ui icon #{type} message" do %>
-        <%= content_tag :i, nil, class: "#{icons[type.to_sym]} sign icon" %>
-        <%= content_tag :div, message, class: "content" %>
-      <% end %>
-    <% end %>
+  <main class="ui page grid">
+    <div class="row">
+      <div class="column">
+        <div class="ui two column very relaxed grid">
 
-    <%= yield %>
-  </div>
+          <div class="fourteen wide column panel">
+            <div class="row">
+              <div class="ui text container" style="margin-bottom: 5px;">
+                <% icons = {success: 'smile', error: 'frown', info: 'info', warning: 'warning'} %>
+                <% flash.each do |type, message| %>
+                  <%= content_tag :div, nil, class: "ui icon #{type} message" do %>
+                    <%= content_tag :i, nil, class: "#{icons[type.to_sym]} sign icon" %>
+                    <%= content_tag :div, message, class: "content" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="ui text container">
+              <%= yield %>
+            </div>
+          </div>
+
+          <div class="two wide column panel">
+            <%= render 'partials/sidebar' %>
+          </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

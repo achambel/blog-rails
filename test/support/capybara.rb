@@ -6,7 +6,11 @@ class ActionDispatch::IntegrationTest
   self.use_transactional_fixtures = false
 
   Capybara::Webkit.configure do |config|
-    config.allow_url("fonts.googleapis.com")
+    permit = %w[
+      fonts.googleapis.com
+      www.gravatar.com
+    ]
+    config.allow_url(permit)
   end
 
   def setup

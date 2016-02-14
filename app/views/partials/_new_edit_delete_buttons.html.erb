@@ -4,7 +4,7 @@
   <%= form.submit nil, class: 'ui teal button' %>
 </div>
 
-<% if current_page?(send("edit_#{object.class.name.downcase}_path", object.id || -1)) %>
+<% if current_page?(send("edit_#{object.class.name.downcase}_path", object.slug || -1)) %>
   <p>
     <%= link_to object, method: :delete,
               data: {

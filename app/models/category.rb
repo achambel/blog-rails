@@ -8,4 +8,12 @@ class Category < ActiveRecord::Base
   def to_s
     self.name
   end
+
+  def self.top(limit = 1)
+    Category.joins(:posts)
+            .group('categories.name', 'categories.slug')
+            .order('count_id desc')
+            .limit(limit)
+            .count(:id)
+  end
 end

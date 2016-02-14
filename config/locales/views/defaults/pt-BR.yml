@@ -24,3 +24,5 @@ pt-BR:
         attention: "Atenção"
         destroy_confirmation: "Realmente gostaria de remover %{target}?"
         show_in_github: "Ver projeto no github"
+        top5authors: "Top 5 Autores"
+        top5categories: "Top 5 Categorias"

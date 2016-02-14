@@ -29,4 +29,24 @@ class CategoryTest < ActiveSupport::TestCase
     assert_equal 'materias-de-programacao', category.slug
   end
 
+  test "should get top 5 categories with more posts" do
+    5.times do
+      Category.create(name: SecureRandom.hex)
+    end
+
+    categories = Category.order(created_at: 'DESC').take(5)
+    alice = users(:alice)
+
+    categories.each do |category|
+      Post.create(title: SecureRandom.hex,
+                  content: 'Any content',
+                  category: category,
+                  user: alice)
+    end
+
+    top5 = Category.top(5)
+
+    assert_equal 5, top5.count
+  end
+
 end
