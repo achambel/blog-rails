@@ -4,11 +4,11 @@
   <% @posts.each do |post| %>
   <div class="ui raised segment">
     <div class="content">
-      <i class="book icon"></i>
+      <i class="circular book icon"></i>
       <%= link_to post.title, post_path(post), class: 'header' %>
       <div class="description">
-        <i class="folder icon"></i>
-        <%= link_to post.category.name, category_posts_path(post.category) %>
+        <%= link_to post.category.name, category_posts_path(post.category),
+                                        class: 'ui blue mini tag label' %>
         <i class="calendar icon"></i>
         <%= "#{t('views.defaults.ago')} #{time_ago_in_words(post.created_at)}" %>
       </div>

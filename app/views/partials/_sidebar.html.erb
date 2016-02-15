@@ -4,10 +4,10 @@
 
     <div class="menu">
       <% Author.top(5).each do |k, v| %>
-        <a href="<%= user_posts_path(k[1]) %>" class="item">
+        <a href="<%= user_posts_path(k[1]) %>" title="<%= k[0] %>" class="item">
           <%= gravatar_image(k[2]) %>
-          <%= k[0] %>
-          <span class="ui teal label"><%= v %></span>
+          <%= k[0].truncate(23) %>
+          <span class="ui teal mini label"><%= v %></span>
         </a>
       <% end %>
     </div>
@@ -19,9 +19,11 @@
     <div class="menu">
       <% Category.top(5).each do |k, v| %>
         <div class="column" style="margin-bottom: 5px;">
-          <a href="<%= category_posts_path(k[1]) %>" class="ui blue tag label">
-            <%= k[0] %>
+          <a href="<%= category_posts_path(k[1]) %>" title="<%= k[0] %>"
+                                                     class="ui blue tag label">
+            <%= k[0].truncate(19) %>
           </a>
+          <span class="ui circular mini label"><%= v %></span>
         </div>
       <% end %>
     </div>

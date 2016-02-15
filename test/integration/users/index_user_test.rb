@@ -22,7 +22,8 @@ class IndexUserTest < UsersTestBase
 
     visit users_path
 
-    assert page.find_link(@user.name, href: user_posts_path(@user))
+    assert page.find('td', text: @user.name).find_link(@user.name,
+                                                  href: user_posts_path(@user))
   end
 
 end

@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.2.3
+services:
+  - postgresql
+addons:
+    code_climate:
+        repo_token: $CODE_CLIMATE_API_KEY
+    postgresql: '9.4'
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_script:
+  - psql -c 'create database blog_test;' -h localhost -U postgres
+  - cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: protected-dusk-60933

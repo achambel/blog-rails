@@ -1,6 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 # A fim de organizar as dependencias do test, foi criado o diretorio support
 Dir['./test/support/**/*.rb'].each do |file|
